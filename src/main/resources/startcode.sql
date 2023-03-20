@@ -51,7 +51,7 @@ UNLOCK TABLES;
 
 CREATE DATABASE  IF NOT EXISTS `olskercupcakes_test` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `olskercupcakes_test`;
-CREATE TABLE olskercupcakes_test.user LIKE startcode.user;
+CREATE TABLE olskercupcakes_test.user LIKE olskercupcakes.user;
 
 
 
