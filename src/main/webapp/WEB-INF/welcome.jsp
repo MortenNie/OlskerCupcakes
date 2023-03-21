@@ -25,6 +25,25 @@
                     href="../login.jsp">Login</a></p>
         </c:if>
 
+        <table class="table table-striped mt-4">
+            <h1>change balance for users</h1>
+            <form method="post">
+
+                <c:forEach var="item" items="${requestScope.userList}">
+                <tr>
+
+                    <td>${item.username} </td>
+                    <td>${item.balance} </td>>
+                    <td><button name="changebalance" type="submit" value="${item.username}" formaction="changebalance" class=" btn btn-primary"> Change balance </button>
+
+                    </td>
+
+                </tr>
+
+                </c:forEach>
+        </table>
+        </form>
+
     </jsp:body>
 
 </t:pagetemplate>

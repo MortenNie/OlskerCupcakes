@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class User
 {
-    
+
     private String username;
     private String password;
     private String role;
@@ -77,5 +77,9 @@ public class User
                 ", kodeord='" + password + '\'' +
                 ", rolle='" + role + '\'' +
                 '}';
+    }
+
+    public int getBalance() {
+        return balance;
     }
 }

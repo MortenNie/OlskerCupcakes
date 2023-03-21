@@ -21,5 +21,10 @@ public class UserFacade
         return UserMapper.testIfUserExist(user, connectionPool);
 
     }
+   public static List<User> getAllUsers(ConnectionPool connectionPool) {
+
+       return UserMapper.getAllUsers(connectionPool);
+   }
+
 
 }
