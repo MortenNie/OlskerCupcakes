@@ -19,7 +19,7 @@
 
             <c:forEach var="s" items="${requestScope.alltoppings}">
                 <tr>
-                    <td><input type="radio" id="toppingsChoice" name="toppings" /> ${s.toppingName} </td>
+                    <td><input type="radio" value="${s.toppingName}" id="toppingsChoice" name="toppings" /> ${s.toppingName} </td>
 
 
                     <td>${s.price} kr. </td>
@@ -35,14 +35,14 @@
 
                 <c:forEach var="t" items="${requestScope.allbottoms}">
                     <tr>
-                        <td><input type="radio" id="bottomsChoice" name="bottoms" /> ${t.bottomsName}   </td>
+                        <td><input type="radio" value="${t.bottomsName}" id="bottomsChoice" name="bottoms" /> ${t.bottomsName}   </td>
                         <td>${t.price} kr. </td>>
 
                     </tr>
 
                 </c:forEach>
             </table>
-            <button name="completecupcake" type="submit">Submit</button>
+            <button name="completecupcake" formaction="completecupcake" type="submit">Submit</button>
         </form>
       
        <form method="post">

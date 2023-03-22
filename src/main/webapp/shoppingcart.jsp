@@ -18,8 +18,8 @@
 
             <c:forEach var="s" items="${sessionScope.shoppingcart}">
                 <tr>
-                    <td>${sessionScope.shoppingcart.products}</td>
-                    <td> ${sessionScope.shoppingcart.totalPrice} </td>
+                    <td>${s.products}</td>
+                    <td> ${s.totalPrice} </td>
 
                 </tr>
 

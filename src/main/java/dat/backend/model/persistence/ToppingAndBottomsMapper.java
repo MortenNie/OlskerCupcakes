@@ -106,7 +106,7 @@ import java.util.List;
      }
      static Topping getToppingsFromName(String topping, ConnectionPool connectionPool) {
 
-         String sql = "SELECT * FROM topping WHERE bottoms_name = ?";
+         String sql = "SELECT * FROM topping WHERE topping_name = ?";
          Topping toppingTwo = null;
 
 

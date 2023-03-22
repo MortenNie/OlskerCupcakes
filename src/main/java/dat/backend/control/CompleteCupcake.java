@@ -34,8 +34,9 @@ public class CompleteCupcake extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String toppingName =  request.getParameter("toppings");
-    Topping topping = ToppingAndBottomsFacade.getToppingsFromName(toppingName, connectionPool);
+
+        String toppingName =  request.getParameter("toppings");
+        Topping topping = ToppingAndBottomsFacade.getToppingsFromName(toppingName, connectionPool);
 
     String bottomsName = request.getParameter("bottoms");
     Bottoms bottoms = ToppingAndBottomsFacade.getBottomsFromName(bottomsName, connectionPool);

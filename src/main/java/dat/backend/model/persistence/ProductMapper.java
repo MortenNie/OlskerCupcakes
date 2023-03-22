@@ -16,7 +16,7 @@ public class ProductMapper {
         Logger.getLogger("web").log(Level.INFO, "");
         Product product= null;
 
-        String sql = "insert into product ( product_name, topping, bottom, quantity) values (?,?,?,?)";
+        String sql = "insert into product (product_name, topping, bottom, quantity) values (?,?,?,?)";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
