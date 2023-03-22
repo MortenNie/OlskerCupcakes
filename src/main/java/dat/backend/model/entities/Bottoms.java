@@ -26,10 +26,6 @@ public class Bottoms {
 
     @Override
     public String toString() {
-        return "Bottoms{" +
-                "bottomsId=" + bottomsId +
-                ", bottomsName='" + bottomsName + '\'' +
-                ", price=" + price +
-                '}';
+        return bottomsName + " ";
     }
 }

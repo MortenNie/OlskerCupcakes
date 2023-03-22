@@ -14,17 +14,17 @@
 
     <jsp:body>
         <form method="post" >
-        <table class="table table-striped mt-4">
+            <table class="table table-striped mt-4">
 
-            <c:forEach var="s" items="${sessionScope.shoppingcart}">
-                <tr>
-                    <td>${s.products}</td>
-                    <td> ${s.totalPrice} </td>
 
-                </tr>
+                    <tr>
+                        <td>${sessionScope.shoppingcart.products}</td>
+                        <td> ${sessionScope.shoppingcart.totalPrice} </td>
 
-            </c:forEach>
-        </table>
+                    </tr>
+
+
+            </table>
         </form>
 
 

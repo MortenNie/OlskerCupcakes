@@ -28,10 +28,6 @@ public class Topping {
 
     @Override
     public String toString() {
-        return "Topping{" +
-                "toppingId=" + toppingId +
-                ", toppingName='" + toppingName + '\'' +
-                ", price=" + price +
-                '}';
+        return toppingName + " ";
     }
 }
