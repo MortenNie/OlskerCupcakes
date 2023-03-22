@@ -19,9 +19,10 @@
 
             <c:forEach var="s" items="${requestScope.alltoppings}">
                 <tr>
+                    <td><input type="radio" id="toppingsChoice" name="toppings" /> ${s.toppingName} </td>
 
-                    <td>${s.toppingName} </td>
-                    <td>${s.price} kr. </td>>
+
+                    <td>${s.price} kr. </td>
 
 
 
@@ -29,26 +30,26 @@
 
               </c:forEach>
             </table>
-        </form>
         <h1> Bottoms </h1>
-        <form method="post" >
             <table class="table table-striped mt-4">
 
                 <c:forEach var="t" items="${requestScope.allbottoms}">
                     <tr>
-
-                        <td>${t.bottomsName} </td>
+                        <td><input type="radio" id="bottomsChoice" name="bottoms" /> ${t.bottomsName}   </td>
                         <td>${t.price} kr. </td>>
-
-
 
                     </tr>
 
                 </c:forEach>
             </table>
+            <button name="completecupcake" type="submit">Submit</button>
         </form>
       
+       <form method="post">
 
+           <button formaction="seeshoppingcart" name="seeshoppingcart" type="submit">Go to Shoppingcart</button>
+
+       </form>
     </jsp:body>
 
 </t:pagetemplate>

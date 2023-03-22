@@ -16,4 +16,12 @@ public class ToppingAndBottomsFacade {
         return ToppingAndBottomsMapper.getAllBottoms(connectionPool);
 
    }
+
+    public static Bottoms getBottomsFromName(String bottoms, ConnectionPool connectionPool) {
+        return ToppingAndBottomsMapper.getBottomsFromName(bottoms, connectionPool);
+
+    }
+    public static Topping getToppingsFromName(String topping, ConnectionPool connectionPool) {
+        return ToppingAndBottomsMapper.getToppingsFromName(topping, connectionPool);
+    }
 }

@@ -39,9 +39,8 @@ import java.util.List;
         }
 
         return toppingList;
-
-
     }
+
 
     static List<Bottoms> getAllBottoms(ConnectionPool connectionPool) {
 
@@ -74,4 +73,67 @@ import java.util.List;
 
     }
 
-}
+     static Bottoms getBottomsFromName(String bottoms, ConnectionPool connectionPool) {
+
+         String sql = "SELECT * FROM bottoms WHERE bottoms_name = ?";
+         Bottoms bottomsTwo = null;
+
+
+         try (Connection connection = connectionPool.getConnection()) {
+
+             try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                 ps.setString(1,bottoms);
+                 ResultSet rs = ps.executeQuery();
+                 while (rs.next()) {
+
+                     int bottomsId = rs.getInt("bottoms_id");
+                     String bottomsName = rs.getString("bottoms_name");
+                     int price = rs.getInt("price");
+
+
+                     bottomsTwo = new Bottoms(bottomsId, bottomsName, price);
+
+                 }
+             }
+
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+
+         return bottomsTwo;
+
+
+     }
+     static Topping getToppingsFromName(String topping, ConnectionPool connectionPool) {
+
+         String sql = "SELECT * FROM topping WHERE bottoms_name = ?";
+         Topping toppingTwo = null;
+
+
+         try (Connection connection = connectionPool.getConnection()) {
+
+             try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                 ps.setString(1,topping);
+                 ResultSet rs = ps.executeQuery();
+                 while (rs.next()) {
+
+                     int toppingId = rs.getInt("topping_id");
+                     String toppingName = rs.getString("topping_name");
+                     int price = rs.getInt("price");
+
+
+                     toppingTwo = new Topping(toppingId, toppingName, price);
+
+                 }
+             }
+
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+
+         return toppingTwo;
+
+
+     }
+ }
+
