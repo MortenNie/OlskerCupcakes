@@ -42,9 +42,9 @@
 
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 1</a>
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 2</a>
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 3</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login">Home</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/listofcupcakes.jsp">Order cupcakes</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/shoppingcart.jsp">Shopping cart</a>
                             <c:if test="${sessionScope.user == null }">
                                 <a class="nav-item nav-link"
                                    href="${pageContext.request.contextPath}/login.jsp">Login</a>

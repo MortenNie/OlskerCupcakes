@@ -43,7 +43,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Cupcake med bund: " + bottoms + "og top: " + topping + "antal: " + quantity;
+        return "Cupcake with " + bottoms + "bottom and " + topping + "topping.                      " + "quantity: " + quantity;
     }
 
 
