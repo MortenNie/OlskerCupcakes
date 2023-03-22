@@ -90,6 +90,7 @@ class UserMapper {
         return userList;
 
     }
+
     static List<User> getAllUsers(ConnectionPool connectionPool) {
 
         String sql = "SELECT * FROM user";
@@ -120,4 +121,52 @@ class UserMapper {
 
     }
 
+    static void changeBalance(String username, int balance, ConnectionPool connectionPool) throws SQLException {
+
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        String sql = "UPDATE user SET balance = ? WHERE username = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+                ps.setInt(1, balance);
+                ps.setString(2, username);
+
+                int rowsAffected = ps.executeUpdate();
+
+            }
+
+        }
+
+    }
+
+     static User SelectUserFromUsername(String username, ConnectionPool connectionPool) {
+        String sql = "SELECT * FROM user WHERE username = ?";
+
+        User user = null;
+
+        try (Connection connection = connectionPool.getConnection()) {
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, username);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    String usernameTwo = rs.getString("username");
+                    String password = rs.getString("password");
+                    String role = rs.getString("role");
+                    int balance = rs.getInt("balance");
+
+
+                    user = new User(usernameTwo, password, role, balance);
+
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+
+    }
 }

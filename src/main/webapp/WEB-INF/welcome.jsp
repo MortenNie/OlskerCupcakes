@@ -18,6 +18,12 @@
 
         <c:if test="${sessionScope.user != null}">
             <p>You are logged in with the role of "${sessionScope.user.role}".</p>
+
+            <form method="post">
+
+            <button formaction="ordercupcake" type="submit" class="align-baseline btn btn-outline-success">Order cupcake</button>
+                <button formaction="seeorderhistory" type="submit" class="align-baseline btn btn-outline-success">See order history</button>
+            </form>
         </c:if>
 
         <c:if test="${sessionScope.user == null}">
@@ -25,24 +31,14 @@
                     href="../login.jsp">Login</a></p>
         </c:if>
 
-        <table class="table table-striped mt-4">
-            <h1>change balance for users</h1>
-            <form method="post">
+        <c:if test="${sessionScope.user.role == 'admin'}">
+        <form method="post">
 
-                <c:forEach var="item" items="${requestScope.userList}">
-                <tr>
+                <button formaction="userlist" type="submit" class="align-baseline btn btn-outline-success"> See User List</button>
 
-                    <td>${item.username} </td>
-                    <td>${item.balance} </td>>
-                    <td><button name="changebalance" type="submit" value="${item.username}" formaction="changebalance" class=" btn btn-primary"> Change balance </button>
 
-                    </td>
+        </c:if>
 
-                </tr>
-
-                </c:forEach>
-        </table>
-        </form>
 
     </jsp:body>
 

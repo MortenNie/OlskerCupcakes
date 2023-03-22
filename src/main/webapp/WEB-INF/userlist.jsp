@@ -18,16 +18,15 @@
         <p> list of users:
         <table class="table table-striped mt-4">
             <h1>Users</h1>
-            <form >
-                <input id="newitem" class="d-inline form-control w-50" type="text" name="newitem" placeholder="Enter new item"/>
-                <button formaction="additem" type="submit" class="align-baseline btn btn-outline-success">Add</button>
+            <form method="post" >
+
 
                 <c:forEach var="item" items="${requestScope.userList}">
                 <tr>
 
                     <td>${item.username} </td>
                     <td>${item.balance} </td>>
-
+                    <td><button name="changebalance" type="submit" value="${item.username}" formaction="changebalance" class=" btn btn-primary"> Change balance </button></td>
 
 
                 </tr>
@@ -37,7 +36,7 @@
         </form>
 
 
-        <p>Jump back to the <a href="index.jsp">Frontpage</a>,
+        <p>Jump back to the <a href="welcome.jsp">Frontpage</a>,
 
 
     </jsp:body>
