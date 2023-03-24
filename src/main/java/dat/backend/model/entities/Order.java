@@ -7,8 +7,7 @@ public class Order {
     private Timestamp date;
     private String username;
 
-
-    public Order(int orderId, Timestamp date, String username) {
+    public Order(int orderId, Timestamp date,String username) {
         this.orderId = orderId;
         this.date = date;
         this.username = username;
