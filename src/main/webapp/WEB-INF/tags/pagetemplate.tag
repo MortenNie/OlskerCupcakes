@@ -42,8 +42,15 @@
 
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
+
+                            <c:if test="${sessionScope.user == null }">
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/index.jsp">Home</a>
+                            </c:if>
+                            <c:if test="${sessionScope.user != null }">
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login">Home</a>
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/listofcupcakes.jsp">Order cupcakes</a>
+                            </c:if>
+
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/ordercupcake">Order cupcakes</a>
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/shoppingcart.jsp">Shopping cart</a>
                             <c:if test="${sessionScope.user == null }">
                                 <a class="nav-item nav-link"
@@ -71,19 +78,20 @@
 <!-- Footer -->
 <div class="container mt-3">
     <hr/>
-    <div class="row mt-4">
-        <div class="col">
-            Nørgaardsvej 30<br/>
-            2800 Lyngby
+    <div class="row">
+        <div class="col-5">
+            &copy; 1973 Olsker Cupcakes<br/>
+            Bornholm, Danmark
         </div>
-        <div class="col">
-            <jsp:invoke fragment="footer"/>
+        <div class="col-5">
+            Rønnevej 39B<br/>
+            3770 Allinge
             <br/>
-            <p>&copy; 2022 Cphbusiness</p>
         </div>
         <div class="col">
-            Datamatikeruddannelsen<br/>
-            2. semester efterår 2022
+            Placeholder<br/>
+            Placeholder<br/>
+            &zwnj;
         </div>
     </div>
 

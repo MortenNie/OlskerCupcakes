@@ -21,7 +21,6 @@
                 <tr>
                     <td><input type="radio" value="${s.toppingName}" id="toppingsChoice" name="toppings" /> ${s.toppingName} </td>
 
-
                     <td>${s.price} kr. </td>
 
 
@@ -29,6 +28,7 @@
                 </tr>
 
               </c:forEach>
+
             </table>
         <h1> Bottoms </h1>
             <table class="table table-striped mt-4">
