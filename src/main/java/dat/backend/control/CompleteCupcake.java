@@ -13,9 +13,11 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "CompleteCupcake", value = "/completecupcake")
 public class CompleteCupcake extends HttpServlet {
+    ShoppingCart shoppingCart = new ShoppingCart();
     private ConnectionPool connectionPool;
 
     @Override
@@ -34,6 +36,10 @@ public class CompleteCupcake extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Topping> allToppings = ToppingAndBottomsFacade.getAllTopping(connectionPool);
+        List<Bottoms> allBottoms = ToppingAndBottomsFacade.getAllBottoms(connectionPool);
+        request.setAttribute("alltoppings", allToppings);
+        request.setAttribute("allbottoms", allBottoms);
 
         String toppingName =  request.getParameter("toppings");
         Topping topping = ToppingAndBottomsFacade.getToppingsFromName(toppingName, connectionPool);
@@ -44,7 +50,7 @@ public class CompleteCupcake extends HttpServlet {
     Product product = ProductFacade.createProduct("cupcake",topping, bottoms, 1, connectionPool);
 
     request.setAttribute("product", product);
-        ShoppingCart shoppingCart = new ShoppingCart();
+
         shoppingCart.addProduct(product);
         HttpSession session = request.getSession();
         session.setAttribute("shoppingcart", shoppingCart);

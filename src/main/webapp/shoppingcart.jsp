@@ -16,10 +16,11 @@
         <form method="post" >
             <table class="table table-striped mt-4">
 
+                <c:forEach var="s" items="${sessionScope.shoppingcart.products}">
 
                     <tr>
-                        <td>${sessionScope.shoppingcart.products}</td>
-                        <td> ${sessionScope.shoppingcart.totalPrice} </td>
+                        <td>${s.toString()}</td>
+                        <td>  </td>
 
                     </tr>
 
@@ -27,7 +28,22 @@
             </table>
         </form>
 
+          </c:forEach>
 
+        <form method="post" >
+            <table class="table table-striped mt-4">
+
+
+
+                <tr>
+                    <td>Total pris: ${sessionScope.shoppingcart.totalPrice} kr. </td>
+                    <td>  </td>
+
+                </tr>
+
+
+            </table>
+        </form>
 
 
 
