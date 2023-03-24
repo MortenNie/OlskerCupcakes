@@ -26,11 +26,11 @@
 
 
             </table>
-        </form>
+
 
           </c:forEach>
 
-        <form method="post" >
+
             <table class="table table-striped mt-4">
 
 
@@ -43,6 +43,9 @@
 
 
             </table>
+
+            <button type="submit" formaction="confirmorder" value="${sessionScope.shoppingcart.totalPrice}" name="confirmorder">Confirm order </button>
+
         </form>
 
 

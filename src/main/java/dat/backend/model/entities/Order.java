@@ -5,10 +5,13 @@ import java.sql.Timestamp;
 public class Order {
     private int orderId;
     private Timestamp date;
+    private String username;
 
-    public Order(int orderId, Timestamp date) {
+
+    public Order(int orderId, Timestamp date, String username) {
         this.orderId = orderId;
         this.date = date;
+        this.username = username;
     }
 
     public int getOrderId() {
@@ -19,6 +22,10 @@ public class Order {
         return date;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -26,4 +33,6 @@ public class Order {
                 ", date=" + date +
                 '}';
     }
+
+
 }
