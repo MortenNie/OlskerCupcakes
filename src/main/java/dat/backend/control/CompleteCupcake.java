@@ -7,6 +7,7 @@ import dat.backend.model.entities.ShoppingCart;
 import dat.backend.model.entities.Topping;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.ProductFacade;
+import dat.backend.model.persistence.ProductMapper;
 import dat.backend.model.persistence.ToppingAndBottomsFacade;
 
 import javax.servlet.*;
@@ -46,8 +47,8 @@ public class CompleteCupcake extends HttpServlet {
 
     String bottomsName = request.getParameter("bottoms");
     Bottoms bottoms = ToppingAndBottomsFacade.getBottomsFromName(bottomsName, connectionPool);
-
-    Product product = ProductFacade.createProduct("cupcake",topping, bottoms, 1, connectionPool);
+    int y = ProductMapper.returnProductId("cupcake", topping, bottoms,1, connectionPool);
+    Product product = ProductFacade.createProduct(y,"cupcake",topping, bottoms, 1, connectionPool);
 
     request.setAttribute("product", product);
 

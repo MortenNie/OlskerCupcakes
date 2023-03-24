@@ -14,12 +14,7 @@ public class Product {
         this.bottoms = bottoms;
         this.quantity = quantity;
     }
-    public Product (String productName, Topping topping, Bottoms bottoms, int quantity ){
-        this.productName = productName;
-        this.topping = topping;
-        this.bottoms = bottoms;
-        this.quantity = quantity;
-    }
+
 
     public int getProductId() {
         return productId;
