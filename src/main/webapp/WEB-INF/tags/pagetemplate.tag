@@ -44,20 +44,20 @@
                         <div class="navbar-nav">
 
                             <c:if test="${sessionScope.user == null }">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/index.jsp">Home</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/index.jsp">&#127968; Home</a>
                             </c:if>
                             <c:if test="${sessionScope.user != null }">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login">Home</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login">&#127968; Home</a>
                             </c:if>
 
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/ordercupcake">Order cupcakes</a>
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/shoppingcart.jsp">Shopping cart</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/ordercupcake">&#129473; Order cupcakes</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/shoppingcart.jsp">&#128722; Shopping cart</a>
                             <c:if test="${sessionScope.user == null }">
                                 <a class="nav-item nav-link"
-                                   href="${pageContext.request.contextPath}/login.jsp">Login</a>
+                                   href="${pageContext.request.contextPath}/login.jsp">&#128274; Login</a>
                             </c:if>
                             <c:if test="${sessionScope.user != null }">
-                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log
+                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">&#128274; Log
                                     out</a>
                             </c:if>
                         </div>

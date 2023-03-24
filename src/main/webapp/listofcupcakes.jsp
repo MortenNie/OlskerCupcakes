@@ -42,13 +42,16 @@
 
                 </c:forEach>
             </table>
-            <button name="completecupcake" formaction="completecupcake" type="submit">Submit</button>
+
+            <div class="container mt-3">
+            <button name="completecupcake" formaction="completecupcake" type="submit" class="btn btn-success">Submit</button>
+            </div>
         </form>
-      
+
        <form method="post">
-
-           <button formaction="seeshoppingcart" name="seeshoppingcart" type="submit">Go to Shoppingcart</button>
-
+           <div class="container mt-3">
+           <button formaction="seeshoppingcart" name="seeshoppingcart" type="submit" class="btn btn-secondary">Go to Shoppingcart</button>
+           </div>
        </form>
     </jsp:body>
 
