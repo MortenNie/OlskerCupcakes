@@ -34,8 +34,25 @@ public class OrderMapper {
         }
         catch (SQLException ex)
         {
-            throw new DatabaseException(ex, "Could not insert item into database");
+            throw new DatabaseException(ex, "Could not insert order into database");
         }
 
+    }
+
+    public static void removeOrder(int orderId,  ConnectionPool connectionPool) {
+
+        String sql = "DELETE FROM olskercupcakes.order WHERE order_id = ?";
+
+        try (Connection connection = connectionPool.getConnection()){
+
+            try(PreparedStatement ps = connection.prepareStatement(sql)){
+
+                ps.setInt(1,orderId);
+                ps.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

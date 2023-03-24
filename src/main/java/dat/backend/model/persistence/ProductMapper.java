@@ -1,11 +1,14 @@
 package dat.backend.model.persistence;
 
 import dat.backend.model.entities.Bottoms;
+import dat.backend.model.entities.Order;
 import dat.backend.model.entities.Product;
 import dat.backend.model.entities.Topping;
+import dat.backend.model.exceptions.DatabaseException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +42,30 @@ public class ProductMapper {
         }
 
         return product;
+    }
+
+
+    public static void addOrderIdToProduct( int orderId, ConnectionPool connectionPool) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        String sql = "insert into product (order_id) values (?)";
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1, orderId);
+
+                ps.executeUpdate();
+
+
+
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new DatabaseException(ex, "Could not insert order into database");
+        }
+
     }
 
 }
