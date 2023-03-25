@@ -41,7 +41,12 @@
                     </tr>
 
                 </c:forEach>
+
+
             </table>
+            <label for="quantity">Quantity (between 1 and 5):</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="5">
+
 
             <div class="container mt-3">
             <button name="completecupcake" formaction="completecupcake" type="submit" class="btn btn-success">Submit</button>

@@ -48,16 +48,17 @@ public class ProductMapper {
     }
 
 
-    public static void addOrderIdToProduct(int orderId, String topping, String bottom, ConnectionPool connectionPool) throws DatabaseException {
+    public static void addOrderIdToProduct(int orderId, int productId, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
 
-        String sql = "Insert into product (order_id, topping, bottom) values (?,?,?)";
+        String sql = "Update product SET order_id = ? WHERE product_id = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, orderId);
-                ps.setString(2, topping );
-                ps.setString(3, bottom);
+                ps.setInt(2, productId);
                 ps.executeUpdate();
+
+
             }
         } catch (SQLException ex) {
             throw new DatabaseException(ex, "Could not insert order into database");
@@ -114,6 +115,23 @@ public class ProductMapper {
         }
 
       return ts;
+    }
+
+    public static void addOrderIdToProductTwo(int orderId, String topping, String bottom, ConnectionPool connectionPool) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        String sql = "Insert into product (order_id, topping, bottom) values (?,?,?)";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderId);
+                ps.setString(2, topping );
+                ps.setString(3, bottom);
+                ps.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Could not insert order into database");
+        }
+
     }
 
 }

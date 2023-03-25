@@ -40,6 +40,40 @@ public class Confirmorder extends HttpServlet {
        User user = (User) session.getAttribute("user");
        int orderId = -1;
         ShoppingCart sc = (ShoppingCart) session.getAttribute("shoppingcart");
+        List<Product> list = sc.getProducts();
+        List<Integer> productIds = new ArrayList<>();
+        try {
+            orderId = OrderFacade.addOrder(user.getUsername(), connectionPool);
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+        }
+
+        for (Product s: list) {
+            productIds.add(s.getProductId());
+
+        }
+
+        for (Integer t: productIds) {
+            try {
+                ProductFacade.addOrderIdToProduct(orderId,t,connectionPool);
+            } catch (DatabaseException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+       request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
+    }
+}
+
+//rest kode fra jons version som han hjalp os med
+
+ /*int pris = Integer.parseInt(request.getParameter("confirmorder"));
+       HttpSession session = request.getSession();
+       User user = (User) session.getAttribute("user");
+       int orderId = -1;
+        ShoppingCart sc = (ShoppingCart) session.getAttribute("shoppingcart");
         List<Product> productList = sc.getProducts();
         try {
             orderId = OrderFacade.addOrder(user.getUsername(), connectionPool);
@@ -51,4 +85,4 @@ public class Confirmorder extends HttpServlet {
         }
        request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
     }
-}
+} */

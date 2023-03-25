@@ -10,8 +10,8 @@ public class ProductFacade {
     public static Product createProduct (int productId, String productName, Topping topping, Bottoms bottoms, int quantity, ConnectionPool connectionPool){
         return ProductMapper.createProduct(productId, productName, topping, bottoms, quantity, connectionPool);
     }
-    public static void addOrderIdToProduct( int orderId,String top, String bottom, ConnectionPool connectionPool) throws DatabaseException{
-        ProductMapper.addOrderIdToProduct(orderId, top, bottom, connectionPool);
+    public static void addOrderIdToProduct( int orderId, int productId, ConnectionPool connectionPool) throws DatabaseException{
+        ProductMapper.addOrderIdToProduct(orderId, productId, connectionPool);
     }
 
 }

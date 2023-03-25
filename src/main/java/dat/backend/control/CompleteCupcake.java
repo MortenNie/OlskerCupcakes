@@ -18,18 +18,14 @@ import java.util.List;
 
 @WebServlet(name = "CompleteCupcake", value = "/completecupcake")
 public class CompleteCupcake extends HttpServlet {
-    ShoppingCart shoppingCart = new ShoppingCart();
-    private ConnectionPool connectionPool;
+       ShoppingCart shoppingCart = new ShoppingCart();
+       private ConnectionPool connectionPool;
 
     @Override
     public void init() throws ServletException
     {
         this.connectionPool = ApplicationStart.getConnectionPool();
     }
-
-
-
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -41,16 +37,17 @@ public class CompleteCupcake extends HttpServlet {
         List<Bottoms> allBottoms = ToppingAndBottomsFacade.getAllBottoms(connectionPool);
         request.setAttribute("alltoppings", allToppings);
         request.setAttribute("allbottoms", allBottoms);
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
 
         String toppingName =  request.getParameter("toppings");
         Topping topping = ToppingAndBottomsFacade.getToppingsFromName(toppingName, connectionPool);
 
-    String bottomsName = request.getParameter("bottoms");
-    Bottoms bottoms = ToppingAndBottomsFacade.getBottomsFromName(bottomsName, connectionPool);
-    int y = ProductMapper.returnProductId("cupcake", topping, bottoms,1, connectionPool);
-    Product product = ProductFacade.createProduct(y,"cupcake",topping, bottoms, 1, connectionPool);
+        String bottomsName = request.getParameter("bottoms");
+        Bottoms bottoms = ToppingAndBottomsFacade.getBottomsFromName(bottomsName, connectionPool);
 
-    request.setAttribute("product", product);
+        int productIden = ProductMapper.returnProductId("cupcake", topping, bottoms,quantity, connectionPool);
+        Product product = new Product(productIden,"cupcake",topping, bottoms, quantity);
+        request.setAttribute("product", product);
 
         shoppingCart.addProduct(product);
         HttpSession session = request.getSession();
