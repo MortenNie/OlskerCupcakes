@@ -23,4 +23,9 @@ public class OrderFacade {
         return OrderMapper.selectAllOrdersFromUser(user, connectionPool);
 
     }
+
+   public static String SelectUserNameFromOrderId(int orderId, ConnectionPool connectionPool) {
+        return OrderMapper.SelectUserNameFromOrderId(orderId, connectionPool);
+
+   }
 }

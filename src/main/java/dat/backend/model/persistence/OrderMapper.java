@@ -1,6 +1,7 @@
 package dat.backend.model.persistence;
 
 import dat.backend.model.entities.Order;
+import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.sql.*;
@@ -118,7 +119,33 @@ public class OrderMapper {
         return orderList;
     }
 
+    static String SelectUserNameFromOrderId(int orderId, ConnectionPool connectionPool) {
+        String sql = "SELECT * FROM olskercupcakes.order WHERE order_id = ?";
 
+        String username = null;
+
+        try (Connection connection = connectionPool.getConnection()) {
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderId);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+
+                    username = rs.getString("username");
+
+
+
+
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return username;
+
+    }
 
 }
 
