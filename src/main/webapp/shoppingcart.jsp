@@ -20,7 +20,7 @@
 
                     <tr>
                         <td>${s.toString()}</td>
-                        <td>  </td>
+                        <td> <button name="deleteproductfromcart" type="submit" value="${s.productId}" formaction="deleteproductfromcart" class="btn btn-primary"> Delete </button> </td>
 
                     </tr>
 

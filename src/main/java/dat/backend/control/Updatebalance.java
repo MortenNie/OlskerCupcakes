@@ -36,6 +36,7 @@ public class Updatebalance extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         List<User> userList = UserFacade.getAllUsers(connectionPool);
         request.setAttribute("userList", userList);
         request.getRequestDispatcher("WEB-INF/userlist.jsp").forward(request, response);

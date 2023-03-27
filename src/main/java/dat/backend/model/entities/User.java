@@ -82,4 +82,11 @@ public class User
     public int getBalance() {
         return balance;
     }
+
+    public int changeToNewBalance(int beløb) {
+        return balance - beløb;
+
+    }
+
+
 }

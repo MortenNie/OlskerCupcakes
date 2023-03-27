@@ -19,4 +19,9 @@ public class ProductFacade {
 
         return ProductMapper.selectProductFromOrderId(orderId, connectionPool);
   }
+
+     public static void deleteProduct(int productId, ConnectionPool connectionPool) throws DatabaseException {
+        ProductMapper.deleteProduct(productId, connectionPool);
+
+    }
 }

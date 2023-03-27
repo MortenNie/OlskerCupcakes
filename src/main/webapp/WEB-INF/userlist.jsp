@@ -27,7 +27,7 @@
                     <td>${item.username} </td>
                     <td>${item.balance} </td>>
                     <td><button name="changebalance" type="submit" value="${item.username}" formaction="changebalance" class=" btn btn-primary"> Change balance </button></td>
-
+                    <td><button name="orderhistoryforuser" type="submit" value="${item.username}" formaction="orderhistoryforuser" class=" btn btn-primary"> See order history for this user </button></td>
 
                 </tr>
 

@@ -132,7 +132,7 @@ class UserMapper {
                 ps.setInt(1, balance);
                 ps.setString(2, username);
 
-                int rowsAffected = ps.executeUpdate();
+                ps.executeUpdate();
 
             }
 
