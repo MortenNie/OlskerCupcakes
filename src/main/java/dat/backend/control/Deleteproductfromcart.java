@@ -18,7 +18,7 @@ import java.util.List;
 @WebServlet(name = "Deleteproductfromcart", value = "/deleteproductfromcart")
 public class Deleteproductfromcart extends HttpServlet {
     private ConnectionPool connectionPool;
-    ShoppingCart sc2 = new ShoppingCart();
+
     @Override
     public void init() throws ServletException
     {
@@ -52,6 +52,8 @@ public class Deleteproductfromcart extends HttpServlet {
             }
         }
 
+        ShoppingCart sc2 = new ShoppingCart();
+
 
        if(productList.isEmpty()) {
 
@@ -63,6 +65,9 @@ public class Deleteproductfromcart extends HttpServlet {
                sc2.addProduct(t);
 
            }
+
+
+
            session.removeAttribute("shoppingcart");
            session.setAttribute("shoppingcart", sc2);
            request.getRequestDispatcher("shoppingcart.jsp").forward(request, response);
