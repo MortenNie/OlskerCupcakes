@@ -3,10 +3,9 @@ package dat.backend.model.persistence;
 import dat.backend.model.entities.Order;
 import dat.backend.model.exceptions.DatabaseException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -55,4 +54,72 @@ public class OrderMapper {
             e.printStackTrace();
         }
     }
+
+     static List<Order> selectAllOrders(ConnectionPool connectionPool) {
+        Logger.getLogger("web").log(Level.INFO, "");
+        List<Order> orderList = new ArrayList<>();
+        String sql = "SELECT * FROM olskercupcakes.order";
+
+        try (Connection connection = connectionPool.getConnection()){
+
+            try(PreparedStatement ps = connection.prepareStatement(sql)){
+
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int OrderId = rs.getInt("order_id");
+                    Timestamp date = rs.getTimestamp("date");
+                    String username = rs.getString("username");
+
+                    Order newOrder = new Order(OrderId, date, username);
+                    orderList.add(newOrder);
+
+
+                }
+
+
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orderList;
+    }
+    static List<Order> selectAllOrdersFromUser(String user, ConnectionPool connectionPool) {
+        Logger.getLogger("web").log(Level.INFO, "");
+        List<Order> orderList = new ArrayList<>();
+        String sql = "SELECT * FROM olskercupcakes.order WHERE username = ?";
+
+        try (Connection connection = connectionPool.getConnection()){
+
+            try(PreparedStatement ps = connection.prepareStatement(sql)){
+                ps.setString(1, user);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int OrderId = rs.getInt("order_id");
+                    Timestamp date = rs.getTimestamp("date");
+                    String username = rs.getString("username");
+
+                    Order newOrder = new Order(OrderId, date, username);
+                    orderList.add(newOrder);
+
+
+                }
+
+
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orderList;
+    }
+
+
+
 }
+
+

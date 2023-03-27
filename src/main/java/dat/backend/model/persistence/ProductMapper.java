@@ -6,10 +6,9 @@ import dat.backend.model.entities.Product;
 import dat.backend.model.entities.Topping;
 import dat.backend.model.exceptions.DatabaseException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -133,5 +132,40 @@ public class ProductMapper {
         }
 
     }
+
+    static List<Product> selectProductFromOrderId(int orderId, ConnectionPool connectionPool) {
+        Logger.getLogger("web").log(Level.INFO, "");
+        List<Product> productList = new ArrayList<>();
+        String sql = "SELECT product_id, topping, topping.price, bottom,  bottoms.price, quantity, topping_id, bottoms_id FROM product INNER JOIN topping ON product.topping = topping.topping_name INNER JOIN bottoms ON product.bottom = bottoms.bottoms_name WHERE product.order_id = ?";
+
+        try (Connection connection = connectionPool.getConnection()){
+
+            try(PreparedStatement ps = connection.prepareStatement(sql)){
+                ps.setInt(1, orderId);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int productId = rs.getInt("product_id");
+                    String productName = "cupcake";
+                    Topping topping = new Topping(rs.getInt("topping_id"),rs.getString("topping"), rs.getInt("topping.price"));
+                    Bottoms bottom = new Bottoms(rs.getInt("bottoms_id"),rs.getString("bottom"), rs.getInt("bottoms.price"));
+                    int quantity = rs.getInt("quantity");
+                    Product newProduct = new Product(productId, productName, topping, bottom, quantity);
+                    productList.add(newProduct);
+
+
+                }
+
+
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return productList;
+    }
+
+
 
 }

@@ -22,7 +22,9 @@
             <form method="post">
 
             <button formaction="ordercupcake" type="submit" class="align-baseline btn btn-outline-success">Order cupcake</button>
-                <button formaction="seeorderhistory" type="submit" class="align-baseline btn btn-outline-success">See order history</button>
+                <button formaction="orderhistory" type="submit" class="align-baseline btn btn-outline-success"> See all orders</button>
+
+
             </form>
         </c:if>
 
@@ -35,6 +37,7 @@
         <form method="post">
 
                 <button formaction="userlist" type="submit" class="align-baseline btn btn-outline-success"> See User List</button>
+        </form>
 
 
         </c:if>
