@@ -61,9 +61,8 @@ public class Confirmorder extends HttpServlet {
             }
 
         }
-
-
-       request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
+        session.removeAttribute("shoppingcart");
+        request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
     }
 }
 
