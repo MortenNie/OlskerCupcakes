@@ -45,10 +45,7 @@ public class Deleteorder extends HttpServlet {
      }
 
      String username = OrderFacade.SelectUserNameFromOrderId(orderId, connectionPool);
-
      OrderFacade.removeOrder(orderId, connectionPool);
-
-
      User user = UserFacade.SelectUserFromUsername(username, connectionPool);
      List<Order> orderList = OrderFacade.selectAllOrdersFromUser(user.getUsername(), connectionPool);
      request.setAttribute("orderList", orderList);

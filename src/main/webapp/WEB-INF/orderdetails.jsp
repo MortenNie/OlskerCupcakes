@@ -49,7 +49,7 @@
         </form>
 
 
-        <p>Jump back to the <a href="welcome.jsp">Frontpage</a>,
+
 
 
     </jsp:body>
