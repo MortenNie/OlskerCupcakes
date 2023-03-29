@@ -72,7 +72,7 @@ public class Confirmorder extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
+            sc.getProducts().clear();
             session.removeAttribute("shoppingcart");
             request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
 

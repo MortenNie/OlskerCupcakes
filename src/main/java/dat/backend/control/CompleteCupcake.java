@@ -52,6 +52,11 @@ public class CompleteCupcake extends HttpServlet {
         shoppingCart.addProduct(product);
         HttpSession session = request.getSession();
         session.setAttribute("shoppingcart", shoppingCart);
+
+        
+
+
         request.getRequestDispatcher("listofcupcakes.jsp").forward(request,response);
+
     }
 }
