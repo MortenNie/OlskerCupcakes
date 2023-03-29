@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+title cupcake activity diagram
+start
+:Welcome side;
+if (are you a user?) then (login)
+:back to the logged area;
+    else (sign up)
+
+:login side;
+endif
+
+if (logged area) then (true)
+
+:order cupcake button;
+repeat
+:choose cupcake and quantity;
+
+repeat while (submit) is (more orders)
+if (shopping cart) then (confirm order)
+      :Succes!! back to the logged area;
+    else (delete order)
+    stop
+    endif
+else (see all orders option)
+endif
+stop
+@enduml
