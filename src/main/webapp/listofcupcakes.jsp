@@ -14,30 +14,28 @@
 
     <jsp:body>
         <h1> toppings </h1>
+
+        <style></style>
         <form method="post" >
-            <table class="table table-striped mt-4">
+            <table class="table table-hover mt-4">
 
             <c:forEach var="s" items="${requestScope.alltoppings}">
                 <tr>
                     <td><input type="radio" value="${s.toppingName}" id="toppingsChoice" name="toppings" /> ${s.toppingName} </td>
-
                     <td>${s.price} kr. </td>
-
-
-
+                    </td>
                 </tr>
 
               </c:forEach>
 
             </table>
         <h1> Bottoms </h1>
-            <table class="table table-striped mt-4">
+            <table class="table table-hover mt-4">
 
                 <c:forEach var="t" items="${requestScope.allbottoms}">
                     <tr>
-                        <td><input type="radio" value="${t.bottomsName}" id="bottomsChoice" name="bottoms" /> ${t.bottomsName}   </td>
-                        <td>${t.price} kr. </td>>
-
+                        <td> <input type="radio" value="${t.bottomsName}" id="bottomsChoice" name="bottoms" /> ${t.bottomsName} </td>
+                        <td>${t.price} kr. </td>
                     </tr>
 
                 </c:forEach>

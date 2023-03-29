@@ -54,7 +54,7 @@
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/shoppingcart.jsp">&#128722; Shopping cart</a>
                             <c:if test="${sessionScope.user == null }">
                                 <a class="nav-item nav-link"
-                                   href="${pageContext.request.contextPath}/login.jsp">&#128274; Login</a>
+                                   href="${pageContext.request.contextPath}/login.jsp">&#128275; Login</a>
                             </c:if>
                             <c:if test="${sessionScope.user != null }">
                                 <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">&#128274; Log

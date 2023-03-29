@@ -17,19 +17,16 @@
             <table class="table table-striped mt-4">
 
                 <c:forEach var="s" items="${sessionScope.shoppingcart.products}">
-
                     <tr>
                         <td>${s.toString()}</td>
-                        <td> <button name="deleteproductfromcart" type="submit" value="${s.productId}" formaction="deleteproductfromcart" class="btn btn-primary"> Delete </button> </td>
-
+                        <td>
+                        <button name="deleteproductfromcart" type="submit" value="${s.productId}" formaction="deleteproductfromcart" class="btn btn-primary"> Delete </button>
+                        </td>
                     </tr>
 
 
-            </table>
-
-
           </c:forEach>
-
+            </table>
 
             <table class="table table-striped mt-4">
 
