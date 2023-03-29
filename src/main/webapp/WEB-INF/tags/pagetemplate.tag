@@ -89,8 +89,8 @@
             <br/>
         </div>
         <div class="col">
-            Placeholder<br/>
-            Placeholder<br/>
+            Olsker's<br/>
+            Bedste Cupcakes<br/>
             &zwnj;
         </div>
     </div>
